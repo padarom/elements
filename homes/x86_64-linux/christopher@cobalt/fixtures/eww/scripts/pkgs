@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+global_pkgs=$(cat /etc/current-system-packages | wc -l)
+hm_pkgs=$(cat /home/christopher/.cache/current-home-manager-packages | wc -l)
+
+echo $(( $global_pkgs + $hm_pkgs ))

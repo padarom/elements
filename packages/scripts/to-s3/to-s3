@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+# Get only the base name for when using relative paths
+base=$(basename "$1")
+extension=${base//^.*\.//}
+
+if [ "png" == "$extension" ]; then
+    bucket_path="screenshots"
+else
+    bucket_path="snippets"
+fi
+
+# Upload the file
+
+oci os object put -bn share.muehl.dev --name "${bucket_path}/${base}" --file "${1}" --force
+
+# Send notifications and copy the URL to the clipboard
+notify-send "File Uploaded" "https://share.muehl.dev/${bucket_path}/${base}"
+echo "https://share.muehl.dev/${bucket_path}/${base}"
+echo -n "https://share.muehl.dev/${bucket_path}/${base}" | xclip
+(xclip -o) | xclip -selection clipboard

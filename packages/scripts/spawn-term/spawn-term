@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+ACTIVE_WINDOW=$(hyprctl activewindow -j )
+ACTIVE_CLASS=$(echo "$ACTIVE_WINDOW" | jq -r .initialClass)
+
+if [[ $ACTIVE_CLASS == *"kitty"* ]]
+then
+  PID=$(echo "$ACTIVE_WINDOW" | jq -r .pid)
+  if [[ "$PID" == "" ]]
+  then
+    kitty
+  fi
+
+  CHILD_PID=$(pgrep -P "$PID" | tail -1)
+  if [[ "$PID" == "" ]]
+  then
+    kitty
+  fi
+
+  pushd "/proc/${CHILD_PID}/cwd"
+  SHELL_CWD=$(pwd -P)
+  popd
+
+  kitty --directory "$SHELL_CWD"
+else
+  kitty
+fi

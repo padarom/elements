@@ -1,0 +1,20 @@
+(defpoll time :interval "5s" :initial `{"hour":"00","min":"00"}`
+  `date +'{"hour":"%H","min":"%M"}'`)
+
+(defpoll date :interval "5s" :initial ``
+  `date +'%a, %b %d'`)
+
+(defpoll pkgCount :interval "1m" :initial `0`
+  `./scripts/pkgs`)
+
+(defpoll temps :interval "2s" :initial "{}"
+  `./scripts/temps`)
+
+(defpoll memory :interval "2s" :initial "{}"
+  `./scripts/memory json`)
+
+(deflisten workspaces :initial "[{}]"
+  `./scripts/get-workspaces 0`)
+
+(deflisten activeWorkspace
+  `./scripts/get-active-workspace 0`)

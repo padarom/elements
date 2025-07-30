@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+THEME_FILE_YAML="/tmp/base16.yml"
+THEME_FILE_JSON="/tmp/base16.json"
+
+wget https://raw.githubusercontent.com/catppuccin/base16/refs/heads/main/base16/macchiato.yaml -O "$THEME_FILE_YAML"
+yq '.' "$THEME_FILE_YAML" > "$THEME_FILE_JSON"
+
+THEME_NAME=$(jq -r '.scheme' "$THEME_FILE_JSON")
+THEME_NAME_LWR=$(echo "$THEME_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+WALLPAPER_BASE="/tmp/wallpaper"
+WALLPAPER_PATH="$WALLPAPER_BASE/$THEME_NAME/Circuits wallpaper/themer-$THEME_NAME_LWR-dark"
+WALLPAPER_DIR=$(dirname "$WALLPAPER_PATH")
+
+npx themer -t wallpaper-circuits -o "$WALLPAPER_BASE" --color-set "$THEME_FILE_JSON" -s 3840x1080 -s 1080x1920
+find "$WALLPAPER_DIR" -type f -iname '*.svg' | sed 'p;s/\.svg/\.png/' | sed 's/.*/"&"/' | xargs -n2 magick
+
+hyprctl hyprpaper reload DP-1,"$WALLPAPER_PATH-3840x1080.png"
+hyprctl hyprpaper reload DP-3,"$WALLPAPER_PATH-1080x1920.png"

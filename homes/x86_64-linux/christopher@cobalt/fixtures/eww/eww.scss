@@ -1,0 +1,102 @@
+@use "sass:map";
+@import "catppuccin";
+
+@mixin icon {
+    font-family: "Font Awesome 6 Pro Dutone";
+    font-weight: 900;
+    font-size: 22px;
+}
+
+$font-family: "";
+$used-palette: "frappe";
+$colors: map.get($palette, $used-palette);
+
+$gradient:
+    "rosewater", "flamingo", "pink", "mauve", "red", "maroon", "peach",
+    "yellow", "green", "teal", "sky";
+
+@each $name, $color in $colors {
+    .color-#{$name} {
+        color: $color;
+    }
+
+    .bg-#{$name} {
+        background: $color;
+    }
+}
+
+@for $i from 1 through length($gradient) {
+    $color: map.get($colors, nth($gradient, $i));
+
+    .gradient-#{$i} {
+        color: $color;
+    }
+
+    .gradient-#{$i}:hover {
+        color: desaturate($color: $color, $amount: 20);
+    }
+
+    .bg-gradient-#{$i} {
+        background: $color;
+    }
+}
+
+* {
+    all: unset;
+}
+
+.spraggins {
+    padding: 5px 15px 0;
+    font-family: $font-family;
+    color: map.get($colors, "text");
+}
+
+.box {
+    background: map.get($colors, "base");
+    border-radius: 4px;
+    // border: 2px solid $blue;
+    padding: 0 12px;
+}
+
+.icon {
+    @include icon;
+
+    &.smol {
+        font-size: 14px;
+    }
+}
+
+.time {
+    font-size: 18px;
+}
+
+.date {
+    font-size: 12px;
+}
+
+.workspaceButton {
+    &.active {
+        color: white;
+    }
+
+    &.empty {
+        font-weight: 300;
+        opacity: 0.3;
+    }
+
+    &.empty.active {
+        opacity: 0.6;
+    }
+}
+
+.sys {
+    padding: 8px 0;
+
+    label {
+        padding: 0 8px;
+    }
+
+    .icon {
+        font-size: 19px;
+    }
+}

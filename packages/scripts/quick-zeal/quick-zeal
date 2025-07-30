@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# Define a function to extract the major version and normalize version strings
+extract_major_version() {
+  echo "$1" | grep -oP "\d+" | head -1
+}
+
+# Detects the focused window and checks if it's Kitty
+ACTIVE_WINDOW=$(hyprctl activewindow -j | jq -r '.class')
+
+# Check if the focused window is a Kitty terminal and if it's in a Git repository.
+# If so, determine the project type and open Zeal with the appropriate argument
+zeal_argument=""
+if [[ $ACTIVE_WINDOW == "kitty" ]]; then
+  PID=$(hyprctl activewindow -j | jq -r '.pid')
+  CHILD_PID=$(pgrep -P "$PID" | tail -1)
+
+  SHELL_CWD=$(readlink -f "/proc/${CHILD_PID}/cwd")
+  echo "Current path: $SHELL_CWD"
+
+  cd "$SHELL_CWD" || exit
+  echo "Kitty terminal is focused."
+
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "  - This is a Git repository."
+
+    if [[ -f "Gemfile" ]]; then
+      echo "  - Detected a Ruby project."
+      # Check for ActiveSupport or Rails
+      if grep -q "activesupport\|rails" Gemfile.lock; then
+        framework_version=$(grep -oP "(activesupport|rails) \(\K=[^)]+" Gemfile.lock | head -1 | tr -d ' =' | cut -d '.' -f1)
+        echo "  - Framework major version: $framework_version"
+        zeal_argument="ror$framework_version,"
+      fi
+
+      ruby_version=$(ruby -v | grep -oP "\d+\.\d+\.\d+" | cut -d '.' -f1)
+      echo "  - Ruby major version: $ruby_version"
+      zeal_argument+="ruby$ruby_version:"
+
+    elif [[ -f "Cargo.toml" ]]; then
+      echo "  - Detected a Rust project."
+      zeal_argument="rust:"
+
+    elif [[ -f "package.json" ]]; then
+      if grep -q '"typescript":' package.json; then
+        echo "  - Detected a TypeScript project."
+        zeal_argument="typescript:"
+      else
+        echo "  - Detected a JavaScript or Node project."
+        zeal_argument="javascript:"
+      fi
+
+    else
+      echo "  - Project type could not be determined."
+    fi
+
+  else
+    echo "  - Not a Git repository."
+  fi
+fi
+
+# Launch Zeal with or without arguments based on detection
+(&>/dev/null zeal "$zeal_argument" &)

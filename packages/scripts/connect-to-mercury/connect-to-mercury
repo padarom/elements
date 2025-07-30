@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+hostname="mercury.local"
+ip=$(dscacheutil -q host -a name ${hostname} | tail -n2 | head -n1 | cut -d' ' -f 2)
+
+if [ -z "${ip}" ]; then
+  echo "Host ${hostname} seems to be down. Are you sure the VM is running?"
+  exit 1
+fi
+
+echo "${hostname}: ${ip}"
+
+sudo route -n delete 172.17.0.0/16 &>/dev/null
+sudo route -n add 172.17.0.0/16 "${ip}" &>/dev/null

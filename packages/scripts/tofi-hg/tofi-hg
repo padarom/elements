@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+HOME=/home/$(whoami)
+BASE_URI="https://github.com/hausgold/"
+
+REPO=$(< "$HOME/.gh/hausgold-repos" tofi)
+
+if [[ -n $REPO ]]; then
+    firefox -P 'Work' "$BASE_URI$REPO"
+fi

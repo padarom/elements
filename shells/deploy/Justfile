@@ -1,0 +1,5 @@
+# TODO: Figure out how to link to the root Justfile and import
+# it with `import '../../Justfile`.
+
+say word:
+  @cowsay {{word}}
