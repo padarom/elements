@@ -4,7 +4,8 @@
     git
     gh
     gitAndTools.git-absorb
-    delta
+    delta # Diffing tool
+    onefetch # neofetch for git repos
 
     pkgs._elements.git-delete-stale
   ];

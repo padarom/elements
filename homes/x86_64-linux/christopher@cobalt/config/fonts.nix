@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    font-manager
     nerd-fonts.monaspace # Patched fonts
     google-fonts # Google fonts
     monaspace

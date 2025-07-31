@@ -20,6 +20,7 @@ in {
     BROWSER = "firefox";
     TERMINAL = "kitty";
     EDITOR = "hx";
+    TERM = "xterm-color";
     # QT_QPA_PLATFORMTHEME = "qt5ct";
 
     # auto-run programs using nix-index-database
