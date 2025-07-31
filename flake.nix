@@ -25,9 +25,6 @@
         cobalt.modules = [
           grub2-themes.nixosModules.default
         ];
-        mercury.modules = [
-          vscode-server.nixosModules.default
-        ];
       };
 
       # Configure nixpkgs when instantiating the package set
@@ -52,7 +49,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Opinionated flake library, just the way I want it
+    # Opinionated flake library for better organization without much boilerplate
     snowfall = {
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,14 +59,11 @@
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs-ruby.url = "github:bobvanderlinden/nixpkgs-ruby";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Encrypting secrets with automatic rekeying for different hosts
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix-rekey.url = "github:oddlama/agenix-rekey";
@@ -93,7 +87,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
     docker-compose-1.url = github:nixos/nixpkgs/b0f0b5c6c021ebafbd322899aa9a54b87d75a313;
 
     grub2-themes.url = github:vinceliuice/grub2-themes;

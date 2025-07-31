@@ -78,7 +78,4 @@ with lib._elements; {
 
   # Forward external traffic internally
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
-  # Enable the VSCode Remote server
-  services.vscode-server.enable = true;
 }

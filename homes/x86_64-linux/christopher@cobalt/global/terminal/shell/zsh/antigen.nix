@@ -14,7 +14,6 @@
     antigen bundle git
     antigen bundle docker
     antigen bundle command-not-found
-    antigen bundle vscode
     # antigen bundle vi-mode
     # antigen bundle gh # gh autocompletion
     # antigen bundle 1password
@@ -29,11 +28,6 @@
 
     # Configure a default theme
     THEME="https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train"
-
-    # Change the theme configuration if the terminal was started via VS Code
-    if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-      THEME="robbyrussel"
-    fi
 
     # Enable the configured theme
     # eval "antigen theme $THEME"

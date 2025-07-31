@@ -3,6 +3,9 @@ This repository contains all my NixOS (and nix-darwin) system and home manager c
 It's not meant to be deployable by anyone other than me, but just as a reference for others.
 
 ## General principles
+I'm using [Snowfall][snowfall] in order to organize my flake in an easy way that doesn't
+require too much boilerplate code.
+
 Every wheels user will have a command available called `elements` with which they
 are able to interface with this main Nix flake. Internally this command is an alias
 for the [just command runner][just] which automatically links to the flake's Justfile.
@@ -23,3 +26,4 @@ There's a couple of ideas I have for this:
 - [ ] Make everything more composable. Can make use of the `elements` config some more, like how it's done for `quirks`
 
 [just]: https://github.com/casey/just
+[snowfall]: https://snowfall.org/guides/lib/quickstart

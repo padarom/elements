@@ -45,6 +45,17 @@ upp input:
 gc:
   sudo nix-collect-garbage --delete-old
 
+# Rekey all secrets where needed
+[group('secrets')]
+rekey:
+  agenix rekey -a
+
+# Edit a single secret file
+[group('secrets')]
+[positional-arguments]
+edit-secret file:
+  agenix edit {{file}}
+
 # Exits the current user session
 [group('desktop')]
 [confirm]
