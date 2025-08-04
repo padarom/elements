@@ -47,6 +47,7 @@
     };
 
   inputs = {
+    # nixpkgs.url = "git+file:///home/christopher/code/opensource/nixpkgs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Opinionated flake library for better organization without much boilerplate
@@ -60,6 +61,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager = {
+      # url = "git+file:///home/christopher/code/opensource/home-manager";
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };

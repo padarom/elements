@@ -6,6 +6,7 @@ in {
   imports = [
     ./programs
     ./shell/aliases.nix
+    ./shell/prompt.nix
     ./shell/nu
     ./shell/zsh
   ];

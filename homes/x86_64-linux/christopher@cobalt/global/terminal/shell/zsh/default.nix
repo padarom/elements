@@ -5,14 +5,12 @@
 }: {
   imports = [
     ./antigen.nix
-    ./prompt.nix
   ];
 
   programs.zoxide.enableZshIntegration = true;
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
     oh-my-zsh.enable = true;
 
     shellAliases = config.home.shellAliases;
