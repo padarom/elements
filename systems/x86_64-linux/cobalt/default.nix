@@ -145,22 +145,15 @@ with lib._elements; {
       htop
       gnumake
       libnotify
-      xarchiver # GUI archiving tool, used with Thunar
 
-      lact
+      lact # GPU tuning
 
       # Oxidized coreutils
       uutils-coreutils-noprefix
 
       wally-cli
       keymapp
-
-      # SANE frontend
-      xsane
-
-      # Desktop environment
       pavucontrol
-      eww
 
       nix-tree
       nix-output-monitor

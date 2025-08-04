@@ -46,9 +46,6 @@
       tofi-hg
       open-url
       generate-wallpaper
-
-      # Required for eww. Move this somewhere else.
-      pkgs.lm_sensors
     ];
   };
 
