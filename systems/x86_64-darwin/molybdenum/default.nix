@@ -11,5 +11,6 @@
     };
   };
 
-  users.users.christopher = {}; # For some reason this is required for hm to work.
+  # For some reason this is required for hm to work with nix-darwin
+  users.users.christopher = {};
 }

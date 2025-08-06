@@ -72,12 +72,6 @@
         }
       }
 
-      $env.PATH = ($env.PATH |
-        split row (char esep) |
-        prepend /home/myuser/.apps |
-        append /usr/bin/env
-      )
-
       def agx [search] {
         hx (ag $search | fzf | cut -d : -f 1,2)
       }
@@ -90,6 +84,7 @@
           | append $"($env.HOME)/code/hausgold/snippets/bin"
           | append $"($env.HOME)/.bun/bin"
           | append $"($env.HOME)/.npm/bin"
+          | append /usr/bin/env
       )
     '';
   };

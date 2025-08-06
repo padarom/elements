@@ -19,6 +19,8 @@ with lib._elements; {
     ./beszel-agent.nix
 
     ./wayland.nix
+
+    # TODO: Add config settings like "services.shutdown.enable = true;"
     "${inputs.self}/modules/nixos/common/services/shutdown.nix"
   ];
 
@@ -48,9 +50,6 @@ with lib._elements; {
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
   console = {
     font = "Lat2-Terminus16";
@@ -131,8 +130,6 @@ with lib._elements; {
       pinentryPackage = pkgs.pinentry-gtk2;
       enableSSHSupport = true;
     };
-
-    zsh.enable = true;
   };
 
   environment = {

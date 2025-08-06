@@ -4,9 +4,6 @@
   config,
   ...
 }: {
-  # Needed for Nix flakes
-  environment.systemPackages = [pkgs.git];
-
   nix.settings = {
     # auto-optimize-store = true;
     # builders-use-substitutes = true;

@@ -32,12 +32,10 @@
     };
   };
 
+  elements.kitty.enable = true;
+
   home = {
     extraOutputsToInstall = ["doc" "devdoc"];
-
-    # Until Home Manager 24.11 releases
-    stateVersion = "23.11";
-    enableNixpkgsReleaseCheck = false;
 
     packages = with pkgs._elements; [
       quick-zeal
@@ -48,8 +46,6 @@
       generate-wallpaper
     ];
   };
-
-  programs.home-manager.enable = true;
 
   # home.file.".config/Yubico/u2f_keys".text = "christopher:C7akk/T8XYov6fOk3rGo0ZW66QPMtdLnGznPuK+tTh/qmPecvECzGVMKJuh5M7nYsMoT6r/idAP88FGinf/rpw==,ydS/PgUALZriaaHYS81u3x8rRFulq727GDJRlvbJhP2yeKK7Ih+xqRceyabLR3MxRN8PT/MtC1I/Xjaxl0S2Rg==,es256,+presence";
 }

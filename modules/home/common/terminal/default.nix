@@ -7,8 +7,7 @@ in {
     ./programs
     ./shell/aliases.nix
     ./shell/prompt.nix
-    ./shell/nu
-    ./shell/zsh
+    # ./shell/nu
   ];
 
   # add environment variables
@@ -22,7 +21,6 @@ in {
     TERMINAL = "kitty";
     EDITOR = "hx";
     TERM = "xterm-color";
-    # QT_QPA_PLATFORMTHEME = "qt5ct";
 
     # auto-run programs using nix-index-database
     NIX_AUTO_RUN = "1";

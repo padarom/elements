@@ -58,15 +58,11 @@ with lib._elements; {
     gnumake
   ];
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
   console = {
     font = "Lat2-Terminus16";
     keyMap = lib.mkForce "de";
   };
 
-  programs.zsh.enable = true;
   programs.vim.enable = true;
   programs.git.enable = true;
 

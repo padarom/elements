@@ -1,13 +1,16 @@
-set shell := ["nu", "-c"]
+set shell := ["bash", "-c"]
 editor := env('EDITOR')
+rebuild := if os() == "linux" { "nixos-rebuild" } else { "darwin-rebuild" }
 
 default:
   @just --list --justfile {{justfile()}}
 
-# Runs `nixos-rebuild`
+# TODO: Run `pre-commit install` at some point
+
+# Runs `nixos-rebuild` or `darwin-rebuild` depending on the OS
 [group('nix')]
 deploy:
-  nixos-rebuild switch --flake . --use-remote-sudo
+  sudo {{rebuild}} switch --flake .
 
 europium:
   nixos-rebuild switch --flake .#europium --target-host europium --build-host europium --use-remote-sudo

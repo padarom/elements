@@ -16,8 +16,13 @@
         nixos = [
           agenix.nixosModules.default
           agenix-rekey.nixosModules.default
+          ./modules/common
         ];
-        darwin = [];
+        darwin = [
+          agenix.darwinModules.default
+          agenix-rekey.nixosModules.default
+          ./modules/common
+        ];
       };
 
       # Add modules only to specific hosts
@@ -41,7 +46,7 @@
     // {
       agenix-rekey = inputs.agenix-rekey.configure {
         userFlake = inputs.self;
-        nixosConfigurations = inputs.self.nixosConfigurations;
+        nixosConfigurations = inputs.self.nixosConfigurations // inputs.self.darwinConfigurations;
         homeConfigurations = inputs.self.homeConfigurations;
       };
     };
