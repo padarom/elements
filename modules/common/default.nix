@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # This module is common to all systems, both nixos and darwin. It is
   # automatically added to all hosts via the flake configuration.
 
@@ -19,5 +15,6 @@
     git
     gitleaks
     just
+    age
   ];
 }
