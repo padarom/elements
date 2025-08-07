@@ -12,9 +12,7 @@
       ./misc/gaming.nix
       ./misc/onedrive.nix
       ./misc/everything.nix # TODO: Determine if we really always want all these programs or they should be composable
-      ./global/terminal
       ./global/current-packages.nix
-      ./editors/helix
       ./editors/jetbrains
     ]
     ++ (import ./config.nix all);

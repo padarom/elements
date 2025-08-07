@@ -19,9 +19,6 @@ with lib._elements; {
     ./beszel-agent.nix
 
     ./wayland.nix
-
-    # TODO: Add config settings like "services.shutdown.enable = true;"
-    "${inputs.self}/modules/nixos/common/services/shutdown.nix"
   ];
 
   elements = {
@@ -94,6 +91,8 @@ with lib._elements; {
   services = {
     # Bluetooth manager
     blueman.enable = true;
+
+    homeassistant-shutdown.enable = true;
 
     pulseaudio.enable = true;
     pulseaudio.support32Bit = true;
