@@ -29,6 +29,10 @@
       systems.hosts = with inputs; {
         cobalt.modules = [
           grub2-themes.nixosModules.default
+          disko.nixosModules.default
+        ];
+        mercury.modules = [
+          disko.nixosModules.default
         ];
       };
 
@@ -70,6 +74,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Disk management via Nix
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";

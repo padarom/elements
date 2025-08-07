@@ -11,10 +11,6 @@
 with lib._elements; {
   imports = [
     ./hardware.nix
-    "${builtins.fetchTarball {
-      url = "https://github.com/nix-community/disko/archive/master.tar.gz";
-      sha256 = "0mzm7digdksivdhikxvrx6l0j2b9lj167ndcimsy9i24k4b91wsk";
-    }}/module.nix"
     ./disk-config.nix
     ./beszel-agent.nix
 

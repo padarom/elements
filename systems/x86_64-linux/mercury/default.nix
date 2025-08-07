@@ -10,10 +10,6 @@
 with lib._elements; {
   imports = [
     ./hardware.nix
-    "${builtins.fetchTarball {
-      url = "https://github.com/nix-community/disko/archive/master.tar.gz";
-      sha256 = "0acvrmfhk86glp59dphbrp9xwcxd8r3zpn18760nzs4930nhhsi3";
-    }}/module.nix"
     ./disk-config.nix
   ];
 
