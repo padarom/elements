@@ -17,7 +17,8 @@ in {
     LESSKEY = "${conf}/less/lesskey";
     DIRENV_LOG_FORMAT = "";
 
-    BROWSER = "firefox";
+    # BROWSER = "firefox";
+    BROWSER = "vivaldi";
     TERMINAL = "kitty";
     EDITOR = "hx";
     TERM = "xterm-color";

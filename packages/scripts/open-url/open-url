@@ -14,8 +14,10 @@ done
 
 if [[ $1 == "https://github.com/hausgold"* ]]; then
   # Also use the `Work` profile for hausgold Github links
-  firefox -P 'Work' "$@"
+  # firefox -P 'Work' "$@"
+  nohup vivaldi --profile-directory="Work" "$@" &
 else
   # Otherwise just use the default profile of Firefox directly
-  firefox "$@"
+  # firefox "$@"
+  nohup vivaldi --profile-directory="Default" "$@" &
 fi

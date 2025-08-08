@@ -6,5 +6,6 @@ BASE_URI="https://github.com/hausgold/"
 REPO=$(< "$HOME/.gh/hausgold-repos" tofi)
 
 if [[ -n $REPO ]]; then
-    firefox -P 'Work' "$BASE_URI$REPO"
+    # firefox -P 'Work' "$BASE_URI$REPO"
+    nohup vivaldi --profile-directory="Work" "$BASE_URI$REPO" &
 fi
