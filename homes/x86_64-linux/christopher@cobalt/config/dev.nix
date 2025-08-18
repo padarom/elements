@@ -6,7 +6,9 @@
     tokei # Like cloc
     zeal # Offline documentation browser
     just # Just a command runner
+    jetbrains-toolbox # Installer for JetBrains IDEs
     claude-code
+    devenv
 
     # Build tools
     cargo

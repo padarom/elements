@@ -90,9 +90,9 @@ with lib._elements; {
 
     homeassistant-shutdown.enable = true;
 
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
-    pipewire.enable = lib.mkForce false;
+    # pulseaudio.enable = true;
+    # pulseaudio.support32Bit = true;
+    pipewire.enable = lib.mkForce true;
 
     # Automatic mounting of removable media
     udisks2.enable = true;
@@ -109,6 +109,10 @@ with lib._elements; {
         brlaser
       ];
     };
+
+    logind.extraConfig = ''
+      RuntimeDirectorySize=6G
+    '';
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;

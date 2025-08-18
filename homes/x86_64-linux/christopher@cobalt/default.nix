@@ -13,7 +13,6 @@
       ./misc/onedrive.nix
       ./misc/everything.nix # TODO: Determine if we really always want all these programs or they should be composable
       ./global/current-packages.nix
-      ./editors/jetbrains
     ]
     ++ (import ./config.nix all);
 
