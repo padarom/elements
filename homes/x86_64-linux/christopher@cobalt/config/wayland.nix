@@ -169,8 +169,7 @@ in {
 
       windowrule = float, title:DevTools
 
-      # Should fix broken blur in Vivaldi
-      windowrule=noblur,class:^()$,title:^()$
+      windowrule=nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
       $mainMod = SUPER

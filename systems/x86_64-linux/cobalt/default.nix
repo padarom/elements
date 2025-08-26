@@ -90,9 +90,9 @@ with lib._elements; {
 
     homeassistant-shutdown.enable = true;
 
-    # pulseaudio.enable = true;
-    # pulseaudio.support32Bit = true;
-    pipewire.enable = lib.mkForce true;
+    pulseaudio.enable = true;
+    pulseaudio.support32Bit = true;
+    pipewire.enable = lib.mkForce false;
 
     # Automatic mounting of removable media
     udisks2.enable = true;
@@ -206,15 +206,6 @@ with lib._elements; {
       enable = true;
       device = "nodev";
       efiSupport = true;
-      gfxmodeEfi = lib.mkForce "3840x1080,auto";
-      gfxmodeBios = lib.mkForce "3840x1080,auto";
-    };
-    grub2-theme = {
-      enable = true;
-      icon = "white";
-      theme = "tela";
-      screen = "ultrawide2k";
-      # resolution = "3840x1080";
     };
   };
 }

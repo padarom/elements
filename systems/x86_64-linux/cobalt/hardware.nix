@@ -45,7 +45,7 @@
     type = sftp
     host = 10.3.0.1
     port = 7319
-    user = christopher-sftp
+    user = christopher
     key_file = /home/christopher/.ssh/id_ethnuc
   '';
 

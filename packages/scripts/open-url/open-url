@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 
+# Function to open the default browser with a specified profile
+open_browser() {
+    local profile="$1"
+    shift
+    firefox -P "$profile" "$@"
+}
+
 # Go up the parent chain of this process to determine if the link was clicked on
-# in Slack. If so, open the `Work` profile on firefox.
+# in Slack. If so, open the `Work` profile in the browser.
 parent=$PPID
 while [ "$parent" -ne 1 ]; do
     cmd=$(ps -o comm= -p "$parent")
     if [[ "$cmd" == "slack" ]]; then
-        firefox -P 'Work' "$@"
+        open_browser "Work" "$@"
         exit 0
     fi
     parent=$(ps -o ppid= -p "$parent" | tail -n 1 | awk '{print $1}')
@@ -14,10 +21,8 @@ done
 
 if [[ $1 == "https://github.com/hausgold"* ]]; then
   # Also use the `Work` profile for hausgold Github links
-  # firefox -P 'Work' "$@"
-  nohup vivaldi --profile-directory="Work" "$@" &
+  open_browser "Work" "$@"
 else
-  # Otherwise just use the default profile of Firefox directly
-  # firefox "$@"
-  nohup vivaldi --profile-directory="Default" "$@" &
+  # Otherwise just use the default profile
+  open_browser "Default" "$@"
 fi

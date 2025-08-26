@@ -28,7 +28,6 @@
       # Add modules only to specific hosts
       systems.hosts = with inputs; {
         cobalt.modules = [
-          grub2-themes.nixosModules.default
           disko.nixosModules.default
         ];
         mercury.modules = [
@@ -103,8 +102,5 @@
     };
 
     docker-compose-1.url = github:nixos/nixpkgs/b0f0b5c6c021ebafbd322899aa9a54b87d75a313;
-
-    grub2-themes.url = github:vinceliuice/grub2-themes;
-    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
   };
 }

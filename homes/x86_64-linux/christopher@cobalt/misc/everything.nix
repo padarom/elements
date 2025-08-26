@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     gnupg
     unzip
+    dua # Interactively view disk space usage
     tldr # Quick man-page replacement
     hyperfine # Terminal benchmarks
     numbat # Scientific calculations
@@ -16,7 +17,7 @@
     bottom # System resource monitor
 
     # GUI
-    # obsidian # Note taking
+    vcv-rack # Audio synthesizer/eurorack simulator
     vlc # Video player
     todoist-electron # Todo application
     logseq # Knowledge Base
