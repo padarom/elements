@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     firefox
+    vivaldi
   ];
 
   xdg.mimeApps = {
@@ -13,7 +14,7 @@
 
   # profile-sync-daemon manages browser profiles in tmpfs
   services.psd = {
-    enable = true;
-    resyncTimer = "10m";
+    enable = false;
+    # resyncTimer = "10m";
   };
 }

@@ -1,0 +1,84 @@
+mqtt:
+  prefix: lnxlink
+  clientId: cobalt
+  server: nanomq.intern.muehl.dev
+  port: 1883
+  auth:
+    user: cobalt
+    pass: cobalt
+    tls: false
+    keyfile: ''
+    certfile: ''
+    ca_certs: ''
+  discovery:
+    enabled: true
+  lwt:
+    enabled: true
+    qos: 1
+  clear_on_off: true
+update_interval: 5
+update_on_change: false
+hass_url: null
+hass_api: null
+modules: null
+custom_modules: null
+exclude:
+- audio_select
+- active_window
+- bash
+- battery
+- beacondb
+- bluetooth
+- boot_select
+- brightness
+- fullscreen
+- gpio
+- gpu
+- idle
+- inference_time
+- ir_remote
+- keep_alive
+- keyboard_hotkeys
+- media
+- mouse
+- network
+- notify
+- power_profile
+- restful
+- screen_onoff
+- screenshot
+- send_keys
+- speech_recognition
+- systemd
+- sys_updates
+- steam
+- wifi
+- webcam
+- xdg_open
+- wol
+- docker
+settings:
+  systemd: null
+  gpio:
+    inputs: null
+    outputs: null
+  hotkeys: null
+  battery:
+    include_batteries: []
+    exclude_batteries: []
+  disk_usage:
+    include_disks: []
+    exclude_disks: []
+  statistics: https://analyzer.bkbilly.workers.dev
+  bash:
+    allow_any_command: false
+    expose: null
+  mounts:
+    autocheck: false
+    directories: []
+  ir_remote:
+    receiver: null
+    transmitter: null
+    buttons: []
+  restful:
+    port: 8112

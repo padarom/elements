@@ -28,17 +28,6 @@
     ];
   };
 
-  fileSystems."/mnt/games/hdd" = {
-    device = "/dev/disk/by-label/Spiele";
-    fsType = "ntfs";
-    options = [
-      "nofail"
-      "exec"
-      "users"
-      "permissions"
-    ];
-  };
-
   environment.systemPackages = [pkgs.rclone];
   environment.etc."rclone-beryllium.conf".text = ''
     [beryllium]

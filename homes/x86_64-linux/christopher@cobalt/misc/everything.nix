@@ -27,6 +27,7 @@
     obs-studio # OBS Studio
     wasistlos # WhatsApp client
     libreoffice # Productivity Suite (like Microsoft Office)
+    onlyoffice-bin # libreoffice alternative
     cider # Apple Music player
     filezilla # FTP Client
     zathura # Document viewer

@@ -3,9 +3,7 @@
 # Main tower workstation environment
 {
   pkgs,
-  inputs,
   lib,
-  config,
   ...
 }:
 with lib._elements; {
@@ -39,6 +37,7 @@ with lib._elements; {
   networking = {
     hostName = "cobalt";
     firewall.enable = false;
+    interfaces.eno1.wakeOnLan.enable = true;
   };
 
   # Set your time zone.
@@ -88,7 +87,8 @@ with lib._elements; {
     # Bluetooth manager
     blueman.enable = true;
 
-    homeassistant-shutdown.enable = true;
+    # Linux link via MQTT
+    lnxlink.enable = true;
 
     pulseaudio.enable = true;
     pulseaudio.support32Bit = true;

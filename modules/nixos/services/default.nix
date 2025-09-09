@@ -1,5 +1,5 @@
 {...}: {
   imports = [
-    ./shutdown.nix
+    ./lnxlink.nix
   ];
 }

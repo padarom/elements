@@ -31,6 +31,29 @@
           };
         };
       };
+
+      gaming = {
+        type = "disk";
+        device = "/dev/sdd";
+        content = {
+          type = "gpt";
+          partitions = {
+            gaming = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = ["-f"];
+                mountpoint = "/mnt/games/hdd";
+                mountOptions = [
+                  "compress=zstd"
+                  "noatime"
+                  "nofail"
+                ];
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
