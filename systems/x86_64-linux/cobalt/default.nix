@@ -4,29 +4,41 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 with lib._elements; {
   imports = [
     ./hardware.nix
     ./disk-config.nix
-    ./beszel-agent.nix
-
-    ./wayland.nix
   ];
 
   elements = {
     hostname = "cobalt";
     users = ["christopher"];
     quirks = ["avahi" "docker" "nix-ld"];
+    wm = enabled;
 
     secrets = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
+
+      needs = {
+        copypartyPassword = rec {
+          owner = "christopher";
+          group = owner;
+          rekeyFile = "copyparty-password.age";
+        };
+      };
     };
   };
 
   # Set the default drive
   disko.devices.disk.main.device = "/dev/nvme1n1";
+
+  musnix = {
+    enable = true;
+    rtcqs.enable = true;
+  };
 
   qt = {
     enable = true;
@@ -50,12 +62,7 @@ with lib._elements; {
 
   xdg.portal = {
     enable = true;
-    config.common.default = ["hyprland"];
-    config.hyprland.default = ["wlr" "gtk"];
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    wlr.enable = true;
+    xdgOpenUsePortal = true;
   };
 
   programs = {
@@ -84,18 +91,30 @@ with lib._elements; {
   };
 
   services = {
+    openssh.enable = true;
+    openssh.settings.PasswordAuthentication = false;
+
     # Bluetooth manager
     blueman.enable = true;
 
     # Linux link via MQTT
     lnxlink.enable = true;
+    beszel-agent.enable = true;
 
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
-    pipewire.enable = lib.mkForce false;
+    pipewire = {
+      enable = lib.mkForce true;
+      alsa.enable = true;
+      jack.enable = true;
+      pulse.enable = true;
+    };
 
     # Automatic mounting of removable media
     udisks2.enable = true;
+
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
+    };
 
     gvfs.enable = true; # Mount/trash/...
     tumbler.enable = true; # Thumbnail support in Thunar
@@ -116,6 +135,38 @@ with lib._elements; {
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;
+
+    copyparty = {
+      enable = false;
+      user = "christopher";
+
+      settings = {
+        i = "0.0.0.0";
+      };
+
+      accounts.c.passwordFile = config.age.secrets.copypartyPassword.path;
+
+      volumes = {
+        "/" = {
+          path = "/home/christopher";
+          access.rwmdga = "c";
+          flags = {
+            fk = 4;
+            scan = 60;
+            e2d = true;
+          };
+        };
+        "/hdd" = {
+          path = "/mnt/hdd";
+          access.rwmdga = "c";
+          flags = {
+            fk = 4;
+            scan = 60;
+            e2d = true;
+          };
+        };
+      };
+    };
   };
 
   programs = {
@@ -141,8 +192,11 @@ with lib._elements; {
       htop
       gnumake
       libnotify
+      gtk3
 
       lact # GPU tuning
+      libimobiledevice
+      ifuse
 
       # Oxidized coreutils
       uutils-coreutils-noprefix

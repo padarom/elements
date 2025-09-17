@@ -14,8 +14,10 @@
       # Global system modules to be included for all systems
       systems.modules = with inputs; {
         nixos = [
+          disko.nixosModules.default
           agenix.nixosModules.default
           agenix-rekey.nixosModules.default
+          copyparty.nixosModules.default
           ./modules/common
         ];
         darwin = [
@@ -28,10 +30,11 @@
       # Add modules only to specific hosts
       systems.hosts = with inputs; {
         cobalt.modules = [
-          disko.nixosModules.default
+          copyparty.nixosModules.default
+          musnix.nixosModules.default
         ];
-        mercury.modules = [
-          disko.nixosModules.default
+        beryllium.modules = [
+          copyparty.nixosModules.default
         ];
       };
 
@@ -41,6 +44,10 @@
         allowUnfree = true;
         permittedInsecurePackages = [];
       };
+
+      overlays = with inputs; [
+        copyparty.overlays.default
+      ];
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
@@ -83,6 +90,8 @@
     agenix-rekey.url = "github:oddlama/agenix-rekey";
     agenix-rekey.inputs.nixpkgs.follows = "nixpkgs";
 
+    copyparty.url = "github:9001/copyparty";
+
     hyprland.url = "github:hyprwm/hyprland";
 
     hypridle = {
@@ -100,6 +109,8 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+
+    musnix.url = "github:musnix/musnix";
 
     docker-compose-1.url = github:nixos/nixpkgs/b0f0b5c6c021ebafbd322899aa9a54b87d75a313;
   };

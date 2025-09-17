@@ -21,6 +21,7 @@
     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHl33DPxxzxrNNjM8rL4ktAj4ExzCyGiU8rKog0csxNA";
 
     needs = {
+      copypartyPassword = "copyparty-password.age";
       repoUpdatePAT = "repo-update-pat.age";
       npmrc = {
         rekeyFile = "npmrc.age";
