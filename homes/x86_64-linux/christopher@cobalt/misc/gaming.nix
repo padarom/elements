@@ -13,11 +13,8 @@
         ];
     })
 
-    # wine
-    #(wineWowPackages.stable.override {waylandSupport = true;})
-    #winetricks
-
     gamemode # performance mode
     mangohud # performance overlays
+    alvr
   ];
 }

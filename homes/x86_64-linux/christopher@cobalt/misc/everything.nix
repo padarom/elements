@@ -15,6 +15,7 @@
     solaar # Logitech mouse driver
     btop # Better resource monitor
     bottom # System resource monitor
+    copyparty
 
     # GUI
     vcv-rack # Audio synthesizer/eurorack simulator
@@ -38,7 +39,7 @@
     # spacedrive # File explorer (Alpha, not usable yet)
     thunderbird # Email client
     speedcrunch # GUI calculator app
-    shotcut # Video editing
+    davinci-resolve # Video editing
     naps2 # Scanning
 
     feh # Image viewer

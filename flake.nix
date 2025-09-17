@@ -16,6 +16,7 @@
         nixos = [
           agenix.nixosModules.default
           agenix-rekey.nixosModules.default
+          copyparty.nixosModules.default
           ./modules/common
         ];
         darwin = [
@@ -41,6 +42,10 @@
         allowUnfree = true;
         permittedInsecurePackages = [];
       };
+
+      overlays = with inputs; [
+        copyparty.overlays.default
+      ];
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
@@ -82,6 +87,8 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix-rekey.url = "github:oddlama/agenix-rekey";
     agenix-rekey.inputs.nixpkgs.follows = "nixpkgs";
+
+    copyparty.url = "github:9001/copyparty";
 
     hyprland.url = "github:hyprwm/hyprland";
 

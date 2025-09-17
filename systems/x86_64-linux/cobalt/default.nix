@@ -4,6 +4,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 with lib._elements; {
@@ -22,6 +23,10 @@ with lib._elements; {
 
     secrets = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
+
+      needs = {
+        copypartyPassword = "copyparty-password.age";
+      };
     };
   };
 
@@ -90,9 +95,9 @@ with lib._elements; {
     # Linux link via MQTT
     lnxlink.enable = true;
 
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
-    pipewire.enable = lib.mkForce false;
+    pulseaudio.enable = false;
+    pulseaudio.support32Bit = false;
+    pipewire.enable = lib.mkForce true;
 
     # Automatic mounting of removable media
     udisks2.enable = true;
@@ -116,6 +121,14 @@ with lib._elements; {
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;
+
+    copyparty = {
+      enable = true;
+
+      accounts = {
+        c.passwordFile = config.age.secrets.copypartyPassword.path;
+      };
+    };
   };
 
   programs = {
@@ -150,6 +163,7 @@ with lib._elements; {
       wally-cli
       keymapp
       pavucontrol
+      pwvucontrol
 
       nix-tree
       nix-output-monitor
