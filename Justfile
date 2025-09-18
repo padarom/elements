@@ -17,10 +17,10 @@ deploy:
   }}
 
 europium:
-  nixos-rebuild switch --flake .#europium --target-host europium --build-host europium --use-remote-sudo
+  nixos-rebuild switch --flake .#europium --target-host europium-deploy --build-host europium --use-remote-sudo
 
 beryllium:
-  nixos-rebuild switch --flake .#beryllium --target-host beryllium --build-host beryllium --use-remote-sudo
+  nixos-rebuild switch --flake .#beryllium --target-host beryllium-deploy --build-host beryllium --use-remote-sudo
   
 # Opens the elements configuration in the default editor
 edit:

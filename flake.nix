@@ -35,8 +35,16 @@
         ];
         beryllium.modules = [
           copyparty.nixosModules.default
+          quadlet.nixosModules.quadlet
+        ];
+        europium.modules = [
+          quadlet.nixosModules.quadlet
         ];
       };
+
+      homes.users."christopher@beryllium".modules = with inputs; [
+        quadlet.homeManagerModules.quadlet
+      ];
 
       # Configure nixpkgs when instantiating the package set
       # TODO: This is already specified elsewhere. Still needed here?
@@ -110,6 +118,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    quadlet.url = "github:SEIAROTg/quadlet-nix";
     musnix.url = "github:musnix/musnix";
 
     docker-compose-1.url = github:nixos/nixpkgs/b0f0b5c6c021ebafbd322899aa9a54b87d75a313;
