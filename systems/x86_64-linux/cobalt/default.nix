@@ -10,7 +10,7 @@
 with lib._elements; {
   imports = [
     ./hardware.nix
-    ./disk-config.nix
+    ./disko.nix
   ];
 
   elements = {
@@ -100,6 +100,7 @@ with lib._elements; {
     # Linux link via MQTT
     lnxlink.enable = true;
     beszel-agent.enable = true;
+    beszel-agent.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkUPOw28Cu2LMuzfmvjT/L2ToNHcADwGyGvSpJ4wH2T";
 
     pipewire = {
       enable = lib.mkForce true;

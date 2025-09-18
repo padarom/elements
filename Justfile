@@ -19,6 +19,9 @@ deploy:
 europium:
   nixos-rebuild switch --flake .#europium --target-host europium --build-host europium --use-remote-sudo
 
+beryllium:
+  nixos-rebuild switch --flake .#beryllium --target-host beryllium --build-host beryllium --use-remote-sudo
+  
 # Opens the elements configuration in the default editor
 edit:
   {{editor}} {{shell('pwd')}}
@@ -35,7 +38,7 @@ repl:
 # Enter a flake dev shell
 [group('nix')]
 shell name:
-  nix develop .#{{name}}
+  nix develop --extra-experimental-features "flakes nix-command" .#{{name}}
 
 # Updates nix flakes
 [group('nix')]

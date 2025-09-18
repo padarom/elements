@@ -10,7 +10,7 @@
 with lib._elements; {
   imports = [
     ./hardware.nix
-    ./disk-config.nix
+    ./disko.nix
   ];
 
   elements = {

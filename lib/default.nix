@@ -1,4 +1,4 @@
-{lib, ...}: rec {
+{lib, ...}: {
   rootPath = ./..;
   secret = name: ./../secrets/${name};
 

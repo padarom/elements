@@ -1,5 +1,40 @@
-# TODO: Figure out how to link to the root Justfile and import
-# it with `import '../../Justfile`.
+default:
+  @just --list --justfile {{justfile()}}
 
-say word:
-  @cowsay {{word}}
+# Inspect the disk configuration compiled by disko.
+[no-cd]
+disk-test host:
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  build_path=$(disko --dry-run --flake "$(pwd)#{{host}}" | tail -n 1)
+  less $build_path
+
+# Deploys the disk configuration. This will reformat and mount the disk.
+[no-cd]
+disk host:
+  sudo disko --flake "$(pwd)#{{host}}" -m destroy,format,mount
+
+# Mounts the configured disk. Useful for when the disk is already formatted.
+[no-cd]
+mount host:
+  sudo disko --flake "$(pwd)#{{host}}" -m mount
+
+# Installs NixOS onto the drives previously mounted by disko.
+[no-cd]
+install host:
+  #!/usr/bin/env bash
+  sudo nixos-install --flake "$(pwd)#{{host}}"
+
+# Deploys the dotfile repository to a user's home dir.
+[no-cd]
+config host user:
+  #!/usr/bin/env bash
+  set -euxo pipefail
+  home=$(nix eval --extra-experimental-features "nix-command flakes" --impure --expr "(builtins.getFlake \"$(pwd)\").nixosConfigurations.{{host}}.config.users.users.{{user}}.home" | tail -n 1 | tr -d \")
+  cp -R $(pwd) "/mnt$home/.dotfiles"
+  
+# send-key:
+#  croc send ~/.ssh/id_key
+
+# receive-key phrase:
+#  croc {{phrase}}

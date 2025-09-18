@@ -10,6 +10,15 @@ in {
   options.services = {
     beszel-agent = {
       enable = mkEnableOption "Enable the Beszel Agent";
+      key = mkOption {
+        type = types.str;
+        description = "The public key to bind the agent to";
+      };
+      port = mkOption {
+        type = types.int;
+        description = "The port to bind the agent to";
+        default = 45876;
+      };
     };
   };
 
@@ -24,8 +33,8 @@ in {
       description = "Beszel Agent (remote monitoring)";
 
       environment = {
-        KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkUPOw28Cu2LMuzfmvjT/L2ToNHcADwGyGvSpJ4wH2T";
-        LISTEN = "45876";
+        KEY = cfg.key;
+        LISTEN = builtins.toString cfg.port;
       };
 
       serviceConfig = {
