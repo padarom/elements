@@ -96,6 +96,7 @@ with lib._elements; {
 
     # Bluetooth manager
     blueman.enable = true;
+    udev.packages = [pkgs.platformio-core.udev];
 
     # Linux link via MQTT
     lnxlink.enable = true;
@@ -220,14 +221,19 @@ with lib._elements; {
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   hardware = {
-    amdgpu = {
-      opencl.enable = true;
-      overdrive.enable = true;
-      #  amdvlk = {
-      #    enable = true;
-      #    support32Bit.enable = true;
-      #  };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
+    # amdgpu = {
+    #   opencl.enable = true;
+    #   overdrive.enable = true;
+    # };
 
     bluetooth = {
       enable = true;

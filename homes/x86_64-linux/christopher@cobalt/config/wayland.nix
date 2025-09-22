@@ -36,7 +36,7 @@ in {
       monitor=,preferred,auto,1
 
       # Gaps for eww
-      monitor=DP-1,addreserved,40,0,0,0
+      monitor=DP-2,addreserved,40,0,0,0
       # monitor=,addreserved,40,0,0,0
 
       # Single tiled windows in a workspace on my main monitor
@@ -63,8 +63,11 @@ in {
       env = XCURSOR_SIZE,28
       env = HYPRCURSOR_THEME,rose-pine-hyprcursor
       env = HYPRCURSOR_SIZE,28
-      env = WLR_NO_HARDWARE_CURSORS,1
+      # env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1
+      env = LIBVA_DRIVER_NAME,nvidia
+      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+      env = NVD_BACKEND,direct
 
       debug {
         disable_logs = false
@@ -85,6 +88,10 @@ in {
         }
 
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+      }
+
+      cursor {
+        no_hardware_cursors = true
       }
 
       general {

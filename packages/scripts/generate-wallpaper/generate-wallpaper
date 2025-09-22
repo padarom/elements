@@ -16,5 +16,5 @@ WALLPAPER_DIR=$(dirname "$WALLPAPER_PATH")
 npx themer -t wallpaper-circuits -o "$WALLPAPER_BASE" --color-set "$THEME_FILE_JSON" -s 3840x1080 -s 1080x1920
 find "$WALLPAPER_DIR" -type f -iname '*.svg' | sed 'p;s/\.svg/\.png/' | sed 's/.*/"&"/' | xargs -n2 magick
 
-hyprctl hyprpaper reload DP-1,"$WALLPAPER_PATH-3840x1080.png"
-hyprctl hyprpaper reload DP-3,"$WALLPAPER_PATH-1080x1920.png"
+hyprctl hyprpaper reload DP-2,"$WALLPAPER_PATH-3840x1080.png"
+hyprctl hyprpaper reload DP-4,"$WALLPAPER_PATH-1080x1920.png"

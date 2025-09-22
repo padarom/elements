@@ -11,6 +11,7 @@
     devenv
 
     # Build tools
+    platformio
     cargo
     glibc
     gcc

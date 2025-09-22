@@ -13,9 +13,9 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["amdgpu"];
-  boot.kernelModules = ["kvm-amd" "uinput"];
-  boot.extraModulePackages = [];
+  boot.initrd.kernelModules = ["uinput"]; # nvidia
+  # boot.initrd.kernelModules = ["amdgpu"];
+  # boot.kernelModules = ["kvm-amd" "uinput"];
   boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/mnt/games/ssd" = {
