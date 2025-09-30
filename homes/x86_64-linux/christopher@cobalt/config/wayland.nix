@@ -10,6 +10,7 @@ in {
     cliphist # Wayland clipboard
     hyprpicker # Color picker
     hyprpaper # Wallpaper utility
+    hyprlandPlugins.borders-plus-plus
   ];
 
   services.hyprpaper = {
@@ -46,13 +47,14 @@ in {
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
       exec-once = ibus-daemon -drxR
-      exec-once = hyprpaper & # Wallpaper util
+      # exec-once = hyprpaper & # Wallpaper util
       exec-once = swaync & # Notification center
       exec-once = udiskie # Automatic mounting of USBs
-      exec-once = sleep 2; ${pkgs._elements.generate-wallpaper}/bin/generate-wallpaper
       # exec-once = eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
+      exec-once = ${pkgs._elements.generate-wallpaper}/bin/generate-wallpaper
       exec-once = eww daemon
       exec-once = eww open spraggins
+      exec-once = sleep 10; eww open spraggins # Open again after a while because the wallpaper will display on top once that is done
       exec-once = wl-paste --type text --watch cliphist store
       exec-once = wl-paste --type image --watch cliphist store
 
@@ -109,7 +111,7 @@ in {
       decoration {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 2
+        rounding = 5
         blur {
           enabled = true
           xray = true
@@ -144,6 +146,20 @@ in {
       plugin {
         split-monitor-workspaces {
           count = 10
+        }
+
+        borders-plus-plus {
+          add_borders = 3
+
+          col.border_1 = rgb(000000)
+          col.border_2 = rgba(5e81acaa)
+          col.border_3 = rgb(000000)
+
+          border_size_1 = 1
+          border_size_2 = 3
+          border_size_3 = 1
+
+          natural_rounding = yes
         }
       }
 
