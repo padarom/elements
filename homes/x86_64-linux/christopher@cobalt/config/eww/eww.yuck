@@ -87,7 +87,7 @@
     (right)))
 
 (defwindow spraggins
-  :monitor 0
+  :monitor 1
   :stacking "bg"
   :windowtype "normal"
   :wm-ignore true

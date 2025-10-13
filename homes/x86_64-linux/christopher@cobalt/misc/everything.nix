@@ -29,6 +29,8 @@
     vesktop # Discord Messenger
     obs-studio # OBS Studio
     wasistlos # WhatsApp client
+    signal-desktop # Messaging
+    zulip # Self-hosted slack alternative
     libreoffice # Productivity Suite (like Microsoft Office)
     onlyoffice-bin # libreoffice alternative
     cider # Apple Music player

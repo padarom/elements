@@ -221,19 +221,10 @@ with lib._elements; {
   systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   hardware = {
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    amdgpu = {
+      opencl.enable = true;
+      overdrive.enable = true;
     };
-
-    # amdgpu = {
-    #   opencl.enable = true;
-    #   overdrive.enable = true;
-    # };
 
     bluetooth = {
       enable = true;

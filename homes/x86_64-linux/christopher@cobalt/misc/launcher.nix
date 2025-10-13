@@ -4,9 +4,15 @@
   ...
 }: {
   home.packages = with pkgs; [
-    tofi
     fuzzel
   ];
+
+  programs.tofi = {
+    enable = true;
+    settings = {
+      font = "JetBrains Mono";
+    };
+  };
 
   # Clear the tofi cache after each activation so that newly installed packages
   # are immediately available using tofi-drun.

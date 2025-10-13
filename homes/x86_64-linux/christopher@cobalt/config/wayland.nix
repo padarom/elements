@@ -31,18 +31,18 @@ in {
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors
       monitor=desc:Samsung Electric Company C49HG9x HTRJ901269,      3840x1080, 0x0, 1 # Left
-      monitor=desc:Ancor Communications Inc ASUS VE278 C5LMTF047320, 1920x1080, 3840x-550, 1, transform, 1 # Right
+      monitor=desc:Ancor Communications Inc ASUS VE278 C5LMTF047320, 1920x1080, 3840x-610, 1, transform, 1 # Right
 
       # Any other random monitor
       monitor=,preferred,auto,1
 
       # Gaps for eww
-      monitor=DP-2,addreserved,40,0,0,0
+      monitor=DP-3,addreserved,40,0,0,0
       # monitor=,addreserved,40,0,0,0
 
       # Single tiled windows in a workspace on my main monitor
       # should be displayed with a padding on both sides
-      workspace=w[t1] m[0],gapsout:15 840 15 840
+      workspace=w[t1] m[1],gapsout:15 840 15 840
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
@@ -67,8 +67,8 @@ in {
       env = HYPRCURSOR_SIZE,28
       # env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1
-      env = LIBVA_DRIVER_NAME,nvidia
-      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+      env = LIBVA_DRIVER_NAME,radeonsi
+      env = __GLX_VENDOR_LIBRARY_NAME,radeonsi
       env = NVD_BACKEND,direct
 
       debug {
