@@ -35,7 +35,15 @@
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkUPOw28Cu2LMuzfmvjT/L2ToNHcADwGyGvSpJ4wH2T";
     };
 
-    apcupsd.enable = true;
+    apcupsd = {
+      enable = true;
+      configText = ''
+        UPSTYPE usb
+        NISIP 0.0.0.0
+        BATTERYLEVEL 50
+        MINUTES 5
+      '';
+    };
   };
 
   # Enable privileged ports for rootless pods

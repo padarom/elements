@@ -51,7 +51,7 @@ in {
       exec-once = swaync & # Notification center
       exec-once = udiskie # Automatic mounting of USBs
       # exec-once = eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) &
-      exec-once = ${pkgs._elements.generate-wallpaper}/bin/generate-wallpaper
+      exec-once = sleep 1; ${pkgs._elements.select-wallpapers}/bin/select-wallpapers
       exec-once = eww daemon
       exec-once = eww open spraggins
       exec-once = sleep 10; eww open spraggins # Open again after a while because the wallpaper will display on top once that is done
@@ -185,12 +185,15 @@ in {
       windowrule = center 1, class:(.*zeal.*)
       windowrule = size 50% 80%, class:(.*zeal.*)
       windowrule = minsize 1400 500, class:(.*zeal.*)
+      windowrule = opacity 0.9, class:(.*zeal.*)
 
       windowrule = float, class:(.*speedcrunch.*)
       windowrule = center 1, class:(.*speedcrunch.*)
       windowrule = size 30% 60%, class:(.*speedcrunch.*)
+      windowrule = opacity 0.9, class:(.*speedcrunch.*)
 
       windowrule = float, title:DevTools
+      windowrule = opacity 0.9, class:(.*kitty.*)
 
       windowrule=nofocus,class:^jetbrains-(?!toolbox),floating:1,title:^win\d+$
 

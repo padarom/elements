@@ -17,15 +17,15 @@ available) or run `nix develop .#name` in the flake root directory.
 
 ## How to deploy a new host
 
-Boot into a install medium. Since this repository is public, we don't need to mess
-with any SSH keys yet. Clone the repository and enter it.
+Boot into an [install medium](https://nixos.org/download/). Since this repository is
+public, we don't need to mess with any SSH keys yet. Clone the repository and enter it.
 ```
   git clone https://github.com/padarom/elements.git
   cd elements
 ```
 
-Then install just, which is the only explicit requirement for this deployment which
-you must install manually. All other dependencies are installed via the dev shell.
+Then install `just`, which is the only explicit requirement for this deployment which
+you must install manually. All other dependencies are automatically installed in the dev shell.
 
 After installing just, enter the deployment shell.
 ```
@@ -34,7 +34,7 @@ After installing just, enter the deployment shell.
 ```
 
 Now, a basic host configuration (with a disko module) is required. This can either
-be prepared on another host and comitted, or created now, in the install media.
+be prepared on another host and comitted, or created now, in the install medium.
 Depending on how many hosts I will still onboard, I might end up creating helper
 functionality in the dev shell specifically for this use case.
 

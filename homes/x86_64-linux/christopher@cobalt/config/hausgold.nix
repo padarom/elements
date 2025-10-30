@@ -7,7 +7,7 @@
     # docker has to be installed globally because we have to enable virtualization
     inputs.docker-compose-1.legacyPackages."x86_64-linux".docker-compose
 
-    ruby_3_2
+    ruby_3_4
 
     # Dev environment specifics
     libxcrypt # maklerportal-frontend-test-suite

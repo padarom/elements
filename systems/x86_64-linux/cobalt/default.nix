@@ -94,6 +94,8 @@ with lib._elements; {
     openssh.enable = true;
     openssh.settings.PasswordAuthentication = false;
 
+    hardware.openrgb.enable = true;
+
     # Bluetooth manager
     blueman.enable = true;
     udev.packages = [pkgs.platformio-core.udev];
@@ -131,9 +133,7 @@ with lib._elements; {
       ];
     };
 
-    logind.extraConfig = ''
-      RuntimeDirectorySize=6G
-    '';
+    logind.settings.Login.RuntimeDirectorySize = "6G";
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;
@@ -196,6 +196,7 @@ with lib._elements; {
       libnotify
       gtk3
 
+      openrgb-with-all-plugins
       lact # GPU tuning
       libimobiledevice
       ifuse
@@ -241,6 +242,9 @@ with lib._elements; {
       enable = true;
       extraBackends = [pkgs.brscan4];
     };
+
+    # 3DConnexion support
+    spacenavd.enable = true;
 
     # Input emulation from userspace (see weylus).
     uinput.enable = true;

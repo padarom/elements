@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     zx # Tool for writing better scripts
-    trurl # Parsing and manipulating URLs via CLI
+    # trurl # Parsing and manipulating URLs via CLI
     dig # DNS
     onefetch # Git information tool
     tokei # Like cloc
