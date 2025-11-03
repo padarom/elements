@@ -21,14 +21,6 @@ with lib._elements; {
 
     secrets = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
-
-      needs = {
-        copypartyPassword = rec {
-          owner = "christopher";
-          group = owner;
-          rekeyFile = "copyparty-password.age";
-        };
-      };
     };
   };
 
@@ -137,38 +129,6 @@ with lib._elements; {
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;
-
-    copyparty = {
-      enable = false;
-      user = "christopher";
-
-      settings = {
-        i = "0.0.0.0";
-      };
-
-      accounts.c.passwordFile = config.age.secrets.copypartyPassword.path;
-
-      volumes = {
-        "/" = {
-          path = "/home/christopher";
-          access.rwmdga = "c";
-          flags = {
-            fk = 4;
-            scan = 60;
-            e2d = true;
-          };
-        };
-        "/hdd" = {
-          path = "/mnt/hdd";
-          access.rwmdga = "c";
-          flags = {
-            fk = 4;
-            scan = 60;
-            e2d = true;
-          };
-        };
-      };
-    };
   };
 
   programs = {

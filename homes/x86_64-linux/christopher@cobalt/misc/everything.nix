@@ -7,6 +7,8 @@
     yubikey-manager
     croc # File transfer
     solaar # Logitech mouse driver
+    btop # Better resource monitor
+    bottom # System resource monitor
 
     # GUI
     vesktop # Discord client

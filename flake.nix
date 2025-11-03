@@ -17,7 +17,6 @@
           disko.nixosModules.default
           agenix.nixosModules.default
           agenix-rekey.nixosModules.default
-          copyparty.nixosModules.default
           ./modules/common
         ];
         darwin = [
@@ -30,11 +29,9 @@
       # Add modules only to specific hosts
       systems.hosts = with inputs; {
         cobalt.modules = [
-          copyparty.nixosModules.default
           musnix.nixosModules.default
         ];
         beryllium.modules = [
-          copyparty.nixosModules.default
           quadlet.nixosModules.quadlet
         ];
         europium.modules = [
@@ -53,9 +50,7 @@
         permittedInsecurePackages = [];
       };
 
-      overlays = with inputs; [
-        copyparty.overlays.default
-      ];
+      overlays = with inputs; [];
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
@@ -97,8 +92,6 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix-rekey.url = "github:oddlama/agenix-rekey";
     agenix-rekey.inputs.nixpkgs.follows = "nixpkgs";
-
-    copyparty.url = "github:9001/copyparty";
 
     hyprland.url = "github:hyprwm/hyprland";
 
