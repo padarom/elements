@@ -13,6 +13,7 @@
         ];
     })
 
+    gamescope
     gamemode # performance mode
     mangohud # performance overlays
     alvr

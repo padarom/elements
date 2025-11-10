@@ -12,7 +12,7 @@ pkgs.writeTextFile rec {
     let landscape = (ls $"($wallpaper_dir)/Landscape" | shuffle | get name | first)
     let portrait  = (ls $"($wallpaper_dir)/Portrait" | shuffle | get name | first)
 
-    hyprctl hyprpaper reload $"DP-3,($landscape)"
-    hyprctl hyprpaper reload $"DP-1,($portrait)"
+    awww img -o DP-3 $landscape --transition-type wipe --transition-angle 30 --transition-step 90
+    awww img -o DP-1 $portrait --transition-type wipe --transition-angle 75 --transition-step 90
   '';
 }

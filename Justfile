@@ -68,6 +68,5 @@ edit-secret file:
 
 # Exits the current user session
 [group('desktop')]
-[confirm]
 logout:
-  hyprctl dispatch exit
+  niri msg action quit

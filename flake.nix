@@ -29,6 +29,8 @@
       # Add modules only to specific hosts
       systems.hosts = with inputs; {
         cobalt.modules = [
+          niri.nixosModules.niri
+          niri-session-manager.nixosModules.niri-session-manager
           musnix.nixosModules.default
         ];
         beryllium.modules = [
@@ -50,7 +52,7 @@
         permittedInsecurePackages = [];
       };
 
-      overlays = with inputs; [];
+      overlays = with inputs; [niri.overlays.niri];
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
@@ -93,22 +95,19 @@
     agenix-rekey.url = "github:oddlama/agenix-rekey";
     agenix-rekey.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "github:hyprwm/hyprland";
+    niri.url = "github:sodiboo/niri-flake";
+    niri-session-manager.url = "github:MTeaHead/niri-session-manager";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
 
-    hypridle = {
-      url = "github:hyprwm/hypridle";
+    astal = {
+      url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rose-pine-hyprcursor = {
-      url = "github:ndom91/rose-pine-hyprcursor";
+    ags = {
+      url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hyprlang.follows = "hyprland/hyprlang";
-    };
-
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
+      inputs.astal.follows = "astal";
     };
 
     quadlet.url = "github:SEIAROTg/quadlet-nix";
