@@ -9,6 +9,7 @@
     xwayland-satellite
     inputs.awww.packages.${pkgs.system}.awww
     _elements.select-wallpapers
+    _elements.ags
   ];
 
   services.swayidle.enable = true;
