@@ -14,6 +14,10 @@
     keep-outputs = true;
 
     trusted-users = ["root" "@wheel"];
+
+    substituters = [
+      "https://cache.nixos.org/"
+    ];
   };
 
   nixpkgs = {

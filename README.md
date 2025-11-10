@@ -78,8 +78,8 @@ Since this is pretty much always a work-in-progress I do not expect it to be in 
 most presentable state at all times. Whenever I have time I try to streamline some of
 the config, but especially when trying out new tools the code could be a bit wild.
 
-There's a couple of ideas I have for this:
-- [ ] Deploy base tooling to all hosts. This mainly includes `nushell` and `helix` configs. They should still be configurable per-host. Potential issue here could be hosts where I don't use home manager
+Additionally, there's a couple of ideas I have for this:
+- [ ] Deploy base tooling to all hosts. This mainly includes shell and `helix` configs. They should still be configurable per-host. Potential issue here could be hosts where I don't use home manager
 - [ ] Make everything more composable. Can make use of the `elements` config some more, like how it's done for `quirks`
 
 [just]: https://github.com/casey/just

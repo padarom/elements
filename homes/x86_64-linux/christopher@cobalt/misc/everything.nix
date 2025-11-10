@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     gnupg
     unzip
@@ -9,6 +13,8 @@
     solaar # Logitech mouse driver
     btop # Better resource monitor
     bottom # System resource monitor
+    grim # Screenshots
+    slurp # Region selection
 
     # GUI
     vesktop # Discord client
@@ -19,12 +25,14 @@
     filezilla # FTP Client
     orca-slicer # Bambu Lab Slicer + Control
     krita # Drawing software
+    inputs.affinity-nix.packages.${pkgs.system}.v3 # Affinity
     mochi # SRS flashcards
     thunderbird # Email client
     speedcrunch # GUI calculator app
     naps2 # Scanning
     vcv-rack # Eurorack simulator
     davinci-resolve # Video editor
+    cider-2 # Apple music player
 
     feh # Image viewer
     xarchiver # Archive viewer/extractor

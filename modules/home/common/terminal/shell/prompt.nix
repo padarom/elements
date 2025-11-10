@@ -4,7 +4,7 @@ in {
   programs.oh-my-posh = {
     enable = true;
     enableNushellIntegration = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
 
     # Original settings taken from `catppuccin_frappe`, and adjusted to my
     # likings and usage.

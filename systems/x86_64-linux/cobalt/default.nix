@@ -34,8 +34,8 @@ with lib._elements; {
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
+    platformTheme = "qt5ct";
+    style = "kvantum";
   };
 
   networking = {
@@ -124,8 +124,6 @@ with lib._elements; {
         brlaser
       ];
     };
-
-    logind.settings.Login.RuntimeDirectorySize = "6G";
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;

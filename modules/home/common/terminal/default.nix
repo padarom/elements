@@ -7,7 +7,8 @@ in {
     ./programs
     ./shell/aliases.nix
     ./shell/prompt.nix
-    # ./shell/nu
+    ./shell/nu
+    ./shell/fish
   ];
 
   # add environment variables

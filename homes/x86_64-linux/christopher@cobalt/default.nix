@@ -41,7 +41,6 @@
       tofi-hg
       open-url
       generate-wallpaper
-      select-wallpapers
     ];
   };
 

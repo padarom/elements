@@ -1,20 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    rose-pine-cursor
     lxappearance
   ];
 
   gtk = {
     enable = true;
-
-    iconTheme = {
-      name = "oomox-rose-pine";
-      package = pkgs.rose-pine-icon-theme;
-    };
-
-    theme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
-    };
 
     cursorTheme = {
       name = "BreezeX-RoséPine";

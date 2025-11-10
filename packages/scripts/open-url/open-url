@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Function to open the default browser with a specified profile
 open_browser() {
     local profile="$1"
@@ -24,5 +22,5 @@ if [[ $1 == "https://github.com/hausgold"* ]]; then
   open_browser "Work" "$@"
 else
   # Otherwise just use the default profile
-  open_browser "Default" "$@"
+  open_browser "default" "$@"
 fi

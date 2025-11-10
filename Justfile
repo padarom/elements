@@ -10,7 +10,7 @@ default:
 [group('nix')]
 deploy:
   {{if os() == "linux" { \
-      "nixos-rebuild switch --flake . --sudo" \
+      "sudo nixos-rebuild switch --flake ." \
     } else { \
       "sudo darwin-rebuild switch --flake ." \
     } \
@@ -68,6 +68,5 @@ edit-secret file:
 
 # Exits the current user session
 [group('desktop')]
-[confirm]
 logout:
-  hyprctl dispatch exit
+  # niri msg action quit
