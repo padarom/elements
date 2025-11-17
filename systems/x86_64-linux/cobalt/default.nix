@@ -104,9 +104,6 @@ with lib._elements; {
       pulse.enable = true;
     };
 
-    # Automatic mounting of removable media
-    udisks2.enable = true;
-
     usbmuxd = {
       enable = true;
       package = pkgs.usbmuxd2;
