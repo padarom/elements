@@ -4,20 +4,23 @@
   config,
   ...
 }: {
-  nix.settings = {
-    # auto-optimize-store = true;
-    # builders-use-substitutes = true;
-    experimental-features = ["nix-command" "flakes"];
-    flake-registry = "/etc/nix/registry.json";
+  nix = {
+    # Automatic cleanup
+    gc.automatic = true;
+    gc.dates = "weekly";
+    gc.options = "--delete-older-than 21d";
 
-    keep-derivations = true;
-    keep-outputs = true;
+    settings = {
+      # builders-use-substitutes = true;
+      experimental-features = ["nix-command" "flakes"];
+      flake-registry = "/etc/nix/registry.json";
 
-    trusted-users = ["root" "@wheel"];
+      keep-derivations = true;
+      keep-outputs = true;
 
-    substituters = [
-      "https://cache.nixos.org/"
-    ];
+      trusted-users = ["root" "@wheel"];
+      substituters = ["https://cache.nixos.org/"];
+    };
   };
 
   nixpkgs = {

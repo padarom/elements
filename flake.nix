@@ -39,9 +39,11 @@
         ];
       };
 
-      homes.users."christopher@beryllium".modules = with inputs; [
-        quadlet.homeManagerModules.quadlet
-      ];
+      homes.users = {
+        "christopher@beryllium".modules = with inputs; [
+          quadlet.homeManagerModules.quadlet
+        ];
+      };
 
       # Configure nixpkgs when instantiating the package set
       # TODO: This is already specified elsewhere. Still needed here?
@@ -65,6 +67,7 @@
     };
 
   inputs = {
+    # nixpkgs.url = "git+file:///home/christopher/code/opensource/nixpkgs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 

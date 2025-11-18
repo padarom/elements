@@ -1,4 +1,4 @@
 {channels, ...}: final: prev: {
   # Pull the following packages from unstable instead
-  inherit (channels.unstable) kitty nu fish cider-2;
+  inherit (channels.unstable) kitty nu fish cider-2 _1password-gui;
 }

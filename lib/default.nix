@@ -1,8 +1,9 @@
-{lib, ...}: {
+{lib, ...} @ all: {
   rootPath = ./..;
   secret = name: ./../secrets/${name};
 
   commonHomeModule = module: ./../homes/common + "/${module}";
+  writeNushellApplication = import ./writeNushellApplication.nix {inherit lib;};
 
   enabled = {enable = true;};
   disabled = {enable = false;};

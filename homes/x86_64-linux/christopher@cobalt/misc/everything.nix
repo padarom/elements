@@ -21,7 +21,7 @@
     vlc # Video player
     obsidian # Note taking
     calibre # eBook Manager
-    onlyoffice-bin # libreoffice alternative
+    onlyoffice-desktopeditors # libreoffice alternative
     filezilla # FTP Client
     orca-slicer # Bambu Lab Slicer + Control
     krita # Drawing software
@@ -34,7 +34,6 @@
     davinci-resolve # Video editor
     cider-2 # Apple music player
 
-    feh # Image viewer
     xarchiver # Archive viewer/extractor
     zathura # Document viewer
     evince # Document viewer

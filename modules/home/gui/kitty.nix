@@ -23,6 +23,10 @@ in {
         paste_actions = "no-op";
       };
 
+      actionAliases = {
+        "launch_current" = "launch --cwd current";
+      };
+
       extraConfig = ''
         shell ${pkgs.nushell}/bin/nu
         modify_font cell_height 7px
@@ -30,5 +34,12 @@ in {
 
       themeFile = "Catppuccin-Frappe";
     };
+
+    xdg.configFile."kitty/open-actions.conf".text = ''
+      # Open all file links in helix in the current shell
+      protocol file
+      # mime text/*
+      action send_text normal,application hx "''${FILE_PATH}"\r
+    '';
   };
 }

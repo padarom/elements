@@ -25,13 +25,10 @@ install host:
   #!/usr/bin/env bash
   sudo nixos-install --flake "$(pwd)#{{host}}"
 
-# Deploys the dotfile repository to a user's home dir.
+# Deploys the dotfile repository to the host.
 [no-cd]
 config host user:
-  #!/usr/bin/env bash
-  set -euxo pipefail
-  home=$(nix eval --extra-experimental-features "nix-command flakes" --impure --expr "(builtins.getFlake \"$(pwd)\").nixosConfigurations.{{host}}.config.users.users.{{user}}.home" | tail -n 1 | tr -d \")
-  cp -R $(pwd) "/mnt$home/.dotfiles"
+  cp -R $(pwd) "/mnt/nix/elements"
   
 # send-key:
 #  croc send ~/.ssh/id_key

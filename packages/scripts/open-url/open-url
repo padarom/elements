@@ -17,7 +17,7 @@ while [ "$parent" -ne 1 ]; do
     parent=$(ps -o ppid= -p "$parent" | tail -n 1 | awk '{print $1}')
 done
 
-if [[ $1 == "https://github.com/hausgold"* ]]; then
+if [[ ${1:-} == "https://github.com/hausgold"* ]]; then
   # Also use the `Work` profile for hausgold Github links
   open_browser "Work" "$@"
 else

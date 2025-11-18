@@ -1,7 +1,7 @@
 {lib, ...}: {
   home.shellAliases = {
-    elements = "just -f ~/.dotfiles/Justfile -d ~/.dotfiles";
-    elem = "elements";
+    elements = "just -f /nix/elements/Justfile -d /nix/elements";
+    elm = "elements";
     g = "git";
     copy = lib.mkDefault "wl-copy";
     inspect = "tmux -f ~/.tmux.inspect.conf new-session ssh inspect";

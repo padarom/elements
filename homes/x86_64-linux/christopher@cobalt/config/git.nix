@@ -3,7 +3,7 @@
     # Dev tools
     git
     gh
-    gitAndTools.git-absorb
+    git-absorb
     delta # Diffing tool
     onefetch # neofetch for git repos
 

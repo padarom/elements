@@ -15,6 +15,7 @@
     git
     gitleaks
     just
+    nh
     age
   ];
 }

@@ -37,16 +37,17 @@ in {
     };
 
     services.desktopManager.plasma6.enable = true;
-    services.displayManager.defaultSession = "plasma";
-    # services.displayManager.sddm.enable = true;
-    # services.displayManager.sddm.wayland.enable = true;
-    # services.displayManager.sddm.wayland.compositor = "kwin";
+    services.displayManager = {
+      defaultSession = "plasma";
+
+      # sddm = {
+      #   enable = true;
+      #  wayland.enable = true;
+      # };
+    };
 
     # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
-    security = {
-      polkit.enable = true;
-      pam.services.swaylock = {};
-    };
+    security.polkit.enable = true;
   };
 }
