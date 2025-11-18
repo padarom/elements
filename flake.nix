@@ -100,6 +100,5 @@
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     quadlet.url = "github:SEIAROTg/quadlet-nix";
     musnix.url = "github:musnix/musnix";
-    docker-compose-1.url = github:nixos/nixpkgs/b0f0b5c6c021ebafbd322899aa9a54b87d75a313;
   };
 }

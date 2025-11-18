@@ -80,7 +80,8 @@ the config, but especially when trying out new tools the code could be a bit wil
 
 Additionally, there's a couple of ideas I have for this:
 - [ ] Deploy base tooling to all hosts. This mainly includes shell and `helix` configs. They should still be configurable per-host. Potential issue here could be hosts where I don't use home manager
-- [ ] Make everything more composable. Can make use of the `elements` config some more, like how it's done for `quirks`
+- [ ] Make everything more composable. Can make use of the `_elements` config some more, like how it's done for `quirks`
+- [ ] Create custom live-ISO that has installation tooling/shortcuts pre-configured
 
 [just]: https://github.com/casey/just
 [snowfall]: https://snowfall.org/guides/lib/quickstart

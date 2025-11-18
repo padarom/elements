@@ -15,7 +15,6 @@ in {
     # clean up ~
     LESSHISTFILE = "${cache}/less/history";
     LESSKEY = "${conf}/less/lesskey";
-    DIRENV_LOG_FORMAT = "";
 
     BROWSER = "firefox";
     TERMINAL = "kitty";

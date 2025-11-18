@@ -156,22 +156,6 @@
         "type": "github"
       }
     },
-    "docker-compose-1": {
-      "locked": {
-        "lastModified": 1624397714,
-        "narHash": "sha256-mtIXSGsYIIK8IM6bY02bZ9ENkOpPNQEMAoHE43Dg8HE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b0f0b5c6c021ebafbd322899aa9a54b87d75a313",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b0f0b5c6c021ebafbd322899aa9a54b87d75a313",
-        "type": "github"
-      }
-    },
     "elemental-wine-source": {
       "flake": false,
       "locked": {
@@ -635,7 +619,6 @@
         "agenix-rekey": "agenix-rekey",
         "darwin": "darwin_2",
         "disko": "disko",
-        "docker-compose-1": "docker-compose-1",
         "home-manager": "home-manager_2",
         "musnix": "musnix",
         "nixpkgs": "nixpkgs_5",

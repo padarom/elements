@@ -17,6 +17,7 @@
     slurp # Region selection
 
     # GUI
+    slack # Work chat
     vesktop # Discord client
     vlc # Video player
     obsidian # Note taking

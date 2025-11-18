@@ -36,7 +36,10 @@
     nodejs_20.pkgs.pnpm
   ];
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    config.global.log_filter = "^$";
+  };
   programs.direnv.nix-direnv.enable = true;
 
   programs.go.enable = true;
