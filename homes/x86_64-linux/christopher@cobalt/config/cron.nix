@@ -4,7 +4,7 @@
   ...
 }: let
   bin = ''
-    #/usr/bin/env bash
+    #!/usr/bin/env bash
 
     ORG="hausgold"
     OUTPUT_FILE="/home/christopher/.gh/$ORG-repos"

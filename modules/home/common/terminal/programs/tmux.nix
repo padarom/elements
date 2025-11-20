@@ -1,7 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  tmuxConfigFile = ".tmux.inspect.conf";
+in {
   home.packages = [pkgs.tmux];
 
-  home.file.".tmux.inspect.conf".text = ''
+  home.shellAliases.inspect = "tmux -f ~/${tmuxConfigFile} new-session ssh inspect";
+
+  home.file.${tmuxConfigFile}.text = lib._elements.selfReferencedString {sep = "#";} ''
     set -g status-position top
     set-option -g status-bg default
     set -g 'status-format[0]' '#[fill=colour202 bg=colour202 fg=colour231 bold]Danger! HAUSGOLD Inspector '

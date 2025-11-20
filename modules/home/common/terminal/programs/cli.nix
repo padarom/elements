@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # Shell software
     fzf # Fuzzy finding
@@ -15,7 +19,25 @@
   ];
 
   programs = {
-    atuin.enable = true; # Better shell history
-    atuin.enableNushellIntegration = true;
+    atuin = {
+      # Better (and synchronized) shell history
+      enable = true;
+      enableNushellIntegration = config.programs.nushell.enable;
+      enableFishIntegration = config.programs.fish.enable;
+    };
+
+    zoxide = {
+      # Quick-jump to folders
+      enable = true;
+      enableNushellIntegration = config.programs.nushell.enable;
+      enableFishIntegration = config.programs.fish.enable;
+    };
+
+    carapace = {
+      # Shell completions
+      enable = true;
+      enableNushellIntegration = config.programs.nushell.enable;
+      enableFishIntegration = config.programs.fish.enable;
+    };
   };
 }

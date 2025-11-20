@@ -1,12 +1,13 @@
-{pkgs, ...}:
-pkgs.writeTextFile rec {
+{
+  lib,
+  pkgs,
+  ...
+}:
+lib._elements.writeNushellApplication pkgs {
   name = "git-delete-stale";
-  destination = "/bin/${name}";
-  executable = true;
+  runtimeInputs = with pkgs; [git];
 
   text = ''
-    #!${pkgs.nushell}/bin/nu
-
     let localBranches = (
       git branch
         | lines

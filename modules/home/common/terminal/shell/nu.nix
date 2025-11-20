@@ -1,27 +1,22 @@
 {
+  lib,
   pkgs,
   config,
   ...
 }: {
-  programs.zoxide.enable = true;
-  programs.zoxide.enableNushellIntegration = true;
-
   programs.nushell = {
     enable = true;
 
     shellAliases = config.home.shellAliases;
+    environmentVariables = config.home.sessionVariables;
 
     plugins = with pkgs; [
       nushellPlugins.query
       nushellPlugins.gstat
       nushellPlugins.skim
-      # nushellPlugins.net
-      # nushellPlugins.units
     ];
 
-    environmentVariables = config.home.sessionVariables;
-
-    extraConfig = ''
+    extraConfig = lib._elements.selfReferencedString {sep = "#";} ''
       let carapace_completer = { |spans|
         carapace $spans.0 nushell ...$spans
           | from json
@@ -77,7 +72,7 @@
       }
     '';
 
-    envFile.text = ''
+    envFile.text = lib._elements.selfReferencedString {sep = "#";} ''
       $env.PATH = (
         $env.PATH
           | split row (char esep)
@@ -87,11 +82,5 @@
           | append /usr/bin/env
       )
     '';
-  };
-
-  # Shell completions
-  programs.carapace = {
-    enable = true;
-    enableNushellIntegration = true;
   };
 }

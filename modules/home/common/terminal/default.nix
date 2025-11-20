@@ -1,5 +1,4 @@
 {config, ...}: let
-  data = config.xdg.dataHome;
   conf = config.xdg.configHome;
   cache = config.xdg.cacheHome;
 in {
@@ -7,7 +6,8 @@ in {
     ./programs
     ./shell/aliases.nix
     ./shell/prompt.nix
-    # ./shell/nu
+    ./shell/fish.nix
+    ./shell/nu.nix
   ];
 
   # add environment variables

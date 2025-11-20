@@ -34,6 +34,7 @@
     vcv-rack # Eurorack simulator
     davinci-resolve # Video editor
     cider-2 # Apple music player
+    todoist-electron # To-Do List app
 
     xarchiver # Archive viewer/extractor
     zathura # Document viewer

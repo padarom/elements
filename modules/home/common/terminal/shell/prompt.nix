@@ -1,10 +1,10 @@
-{...}: let
+{config, ...}: let
   unicode = code: builtins.fromJSON ''"${code}" '';
 in {
   programs.oh-my-posh = {
     enable = true;
-    enableNushellIntegration = true;
-    enableFishIntegration = true;
+    enableNushellIntegration = config.programs.nushell.enable;
+    enableFishIntegration = config.programs.fish.enable;
 
     # Original settings taken from `catppuccin_frappe`, and adjusted to my
     # likings and usage.
